@@ -11,7 +11,7 @@ const LoginForm: React.FC = () => {
     <IonPage>
       <IonContent>
           <IonItem className={styles.nickname}>
-            <IonLabel position="fixed">Fixed Label</IonLabel>
+            <IonLabel position="fixed">Login</IonLabel>
             <IonInput value="Epic"></IonInput>
           </IonItem>
       </IonContent>

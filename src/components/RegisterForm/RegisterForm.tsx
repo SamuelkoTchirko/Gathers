@@ -11,7 +11,7 @@ const RegisterForm: React.FC = () => {
     <IonPage>
       <IonContent>
           <IonItem className={styles.nickname}>
-            <IonLabel position="fixed">Fixed Labely</IonLabel>
+            <IonLabel position="fixed">Register</IonLabel>
             <IonInput value="Epic"></IonInput>
           </IonItem>
       </IonContent>
