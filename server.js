@@ -7,8 +7,7 @@ const app = express(); // create express app
 app.use(cors())
 
 app.get("/user/logged", function(req, res) {  
-  res.send(true);
+  res.send(false);
 })
 
 app.listen(8110)
-//

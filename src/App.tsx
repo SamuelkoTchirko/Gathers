@@ -11,12 +11,14 @@ import {
   IonTabButton,
   IonTabs,
 } from '@ionic/react';
+
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 import Tab4 from './pages/Tab4';
+import LogRegPage from './pages/LogRegPage/LogRegPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -39,14 +41,13 @@ import './theme/variables.css';
 import { renderIntoDocument } from 'react-dom/test-utils';
 
 const App: React.FC = () => {
-  
   let history = useHistory();
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {   
+  useEffect(() => {
     fetch("http://localhost:8110/user/logged")
     .then(res => res.json())
     .then(
@@ -67,35 +68,39 @@ const App: React.FC = () => {
     console.log(loggedIn+"so ez");
   }, [loggedIn])*/
 
+  function renderRegister(){
+    history.push("/register");
+  }
+  function renderTab2(){
+    history.push("/register");
+  }
+
   return(
     <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          <Route exact path="/tab2">
+            {loggedIn ? renderTab2:renderRegister}
+          </Route>
+
           <Route exact path="/tab1">
             <Tab1 />
           </Route>
 
-
-          {loggedIn ? 
-            <Route exact path="/tab2">
-              <Tab2 />
-            </Route>:
-            <Route exact path="/tab2">
-              <Redirect to="/eznoobs" />
-            </Route>    
-          }
-
-
           <Route path="/tab3">
             <Tab3 />
           </Route>
-          <Route path="/eznoobs">
-            <Tab4 />
+          <Route path="/register">
+            <LogRegPage type="register"/>
+          </Route>
+          <Route path="/login">
+            <LogRegPage type="login"/>
           </Route>
           <Route exact path="/">
             <Redirect to="/tab1" />
           </Route>
+
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
