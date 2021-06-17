@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Gathers",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

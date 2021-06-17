@@ -1,0 +1,7 @@
+{
+  "name": "Gathers",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
