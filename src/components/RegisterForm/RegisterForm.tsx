@@ -16,19 +16,18 @@ const RegisterForm: React.FC = () => {
     console.log("Submitting")
 
     if(password == secpassword){
-      fetch('http://localhost:8110/users', {
-      method: 'POST',
-      headers: {
-        "Content-type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      },
-      body: JSON.stringify({
-        nickname: nickname, 
-        password: password
-      })
+      fetch('http://localhost:8110/users/', {
+        method: 'POST',
+        headers: {
+        "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          "nickname": nickname, 
+          "password": password
+        })
       }).then(res => {
         return res.json()
-      }).then(data=> console.log("ezpz"))
+      }).then(data => console.log("ezpz"))
       .catch(error => console.log(error))
     }else{
       console.log("Hesla sa nezhoduju")
