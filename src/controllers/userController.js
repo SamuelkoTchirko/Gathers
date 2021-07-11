@@ -13,8 +13,8 @@ router.use(cors())
 const User = require("../models/userModel"); 
 
 router.post("/", (req, res) => {
-    console.log(req.body.nickname)
-    console.log(req.body.password)
+    //console.log(req.body.nickname)
+    //console.log(req.body.password)
     const user = new User({
         nickname: req.body.nickname,
         password: req.body.password

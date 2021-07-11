@@ -42,50 +42,20 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import { renderIntoDocument } from 'react-dom/test-utils';
 
+
 const App: React.FC = () => {
-  const history = useHistory();
 
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    fetch("http://localhost:8110/user/logged")
-    .then(res => res.json())
-    .then(
-      (result) => {
-        //console.log(result)
-        setIsLoaded(true);
-        setLoggedIn(result);
-      },
-      
-      (error) => {
-        setIsLoaded(true);
-        setError(error);
-      }
-    )
-  }, []);
-
-  /*useEffect(()=>{
-    console.log(loggedIn+"so ez");
-  }, [loggedIn])*/
-
-  function renderRegister(){
-    history.push("/register");
-  }
-  function renderTab2(){
-    history.push("/register");
-  }
-
-  if(loggedIn){
-    return(
-      <MainPage/>
-    );
-  }else{
-    return(
-      <LogRegPage type="register"/>
-    );
-  }
+  return(
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path="/" component={MainPage} />
+          <Route path="/login" component={LogRegPage} />
+          <Route path="/register" component={LogRegPage} />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  )
 }
 
 export default App;
