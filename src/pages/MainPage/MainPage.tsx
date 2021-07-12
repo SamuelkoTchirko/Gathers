@@ -17,7 +17,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
 import Tab1 from '../Tab1';
 import Tab2 from '../Tab2';
-import Tab3 from '../Tab3';
+import ProfilePage from '../ProfilePage/ProfilePage';
 import Tab4 from '../Tab4';
 import LogRegPage from '../LogRegPage/LogRegPage';
 
@@ -90,7 +90,7 @@ const App: React.FC = () => {
           </Route>
 
           <Route path="/tab3">
-            <Tab3 />
+            <ProfilePage />
           </Route>
 
           <Route exact path="/">
@@ -109,7 +109,7 @@ const App: React.FC = () => {
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
             <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonLabel>Profil</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

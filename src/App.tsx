@@ -17,7 +17,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import Tab3 from './pages/ProfilePage/ProfilePage';
 import Tab4 from './pages/Tab4';
 import LogRegPage from './pages/LogRegPage/LogRegPage';
 import MainPage from './pages/MainPage/MainPage';
@@ -42,16 +42,32 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import { renderIntoDocument } from 'react-dom/test-utils';
 
+//Redux imports
+import { useSelector } from "react-redux";
+
 
 const App: React.FC = () => {
+
+  const loggedIn = useSelector((state: any) => state.loggedIn);
+
+  useEffect(()=>{
+    
+  }, [loggedIn])
 
   return(
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route path="/" component={MainPage} />
-          <Route path="/login" component={LogRegPage} />
-          <Route path="/register" component={LogRegPage} />
+          {loggedIn ? 
+          <>
+            <Route path="/" component={MainPage} />
+            <Route path="/register" component={MainPage} />
+          </>
+          :
+          <>
+            <Route path="/" component={LogRegPage} />
+            <Route path="/register" component={LogRegPage} />
+          </>}
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>

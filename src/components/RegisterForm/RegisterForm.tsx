@@ -7,6 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { createBrowserHistory } from 'history'
 
 import { IonButton, IonGrid, IonCol, IonRow, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonItem, IonLabel, IonList, IonItemDivider } from '@ionic/react';
 import styles from './RegisterForm.module.scss';
@@ -25,7 +26,7 @@ import {logout} from "../../redux/actions/logout"
 
 const RegisterForm: React.FC = () => {
 
-  let history = useHistory();
+  const history = createBrowserHistory();
 
   const isLogged = useSelector((state: any) => state.loggedIn);
   const dispatch = useDispatch();
@@ -145,6 +146,8 @@ const RegisterForm: React.FC = () => {
           <button className={styles.testbutton} onClick={()=> {
             dispatch(login()) 
             console.log()
+            history.push("/")
+            history.go(0)
           }}></button>
         </IonContent>
       </IonPage>
