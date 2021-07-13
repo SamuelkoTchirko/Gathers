@@ -43,7 +43,7 @@ const ProfilePage: React.FC = () => {
             console.log()
             history.push("/register")
             history.go(0)
-          }}></button>
+          }}>lubim ta</button>
         <ExploreContainer name="Profil page" />
       </IonContent>
     </IonPage>

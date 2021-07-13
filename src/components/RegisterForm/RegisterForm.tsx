@@ -56,8 +56,10 @@ const RegisterForm: React.FC = () => {
       fetch('http://localhost:8110/users/', {
         method: 'POST',
         headers: {
-        "Content-type": "application/json"
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "*"
         },
+        mode: 'cors',
         body: JSON.stringify({
           "nickname": nickname, 
           "password": password
@@ -66,22 +68,13 @@ const RegisterForm: React.FC = () => {
         res.json()
       }).then(data => console.log(data))
       .catch(error => console.log(error))
-      .finally(()=>{setSuccesfulLogin(true)})
+      .finally(()=>{
+        
+      })
     }else{
       console.log("Hesla sa nezhoduju")
     }
-
-    window.location.href = "/";
-  }
-
-  if(succesfulLogin){
-    return (
-      <>
-        <App />
-      </>
-
-    )
-  }else{
+  };
     return (
       <IonPage>
         <IonContent>
@@ -137,7 +130,7 @@ const RegisterForm: React.FC = () => {
               <IonCol size="4">
                 <br />
                 <br />
-                <IonButton onClick={handleSubmit} type="submit" expand="block" fill="outline">Zaregistruj Sa</IonButton>
+                <IonButton type="submit" expand="block" fill="outline">Zaregistruj Sa</IonButton>
               </IonCol>
               <IonCol></IonCol>
             </IonRow>
@@ -152,7 +145,6 @@ const RegisterForm: React.FC = () => {
         </IonContent>
       </IonPage>
     );
-  }
 };
 
 export default RegisterForm;
