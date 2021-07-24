@@ -1,5 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useHistory , Redirect} from "react-router-dom";
+
+/* eslint-disable */
+// @ts-ignore
+import Form from 'react-validation/build/form';
+// @ts-ignore
+import Input from "react-validation/build/input";
+// @ts-ignore
+import CheckButton from "react-validation/build/button";
+/* eslint-enable */
 
 import {
   BrowserRouter as Router,
@@ -22,18 +31,24 @@ import { useSelector , useDispatch} from "react-redux"
 import {login} from "../../redux/actions/login"
 import {logout} from "../../redux/actions/logout"
 
+import { register } from "../../redux/actions/auth";
 
 
 const RegisterForm: React.FC = () => {
 
+  const form = useRef() as any;
+  const checkBtn = useRef() as any;
+
   const history = createBrowserHistory();
 
   const isLogged = useSelector((state: any) => state.loggedIn);
+
   const dispatch = useDispatch();
 
-  const [nickname, setNickname] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [secpassword, setSecPassword] = useState("");
+  const [successful, setSuccessful] = useState(false);
 
   //function redirectOnRegister(){
   //  return <Redirect to={"/tab2"} />
@@ -45,9 +60,29 @@ const RegisterForm: React.FC = () => {
   //  console.log(succesfulLogin)
   //}, [succesfulLogin])
 
-  useEffect(()=>{
-    console.log(isLogged)
-  }, [isLogged])
+  //useEffect(()=>{
+  //  console.log(password)
+  //}, [password])
+
+  const handleRegister = () => {
+
+    setSuccessful(false);
+
+    form.current.validateAll();
+
+    if(password == secpassword){
+      dispatch(register(username , password, dispatch))
+      .then(() => {
+        setSuccessful(true);
+        console.log("Registration succesful!")
+      })
+      .catch(() => {
+        setSuccessful(false);
+      });
+    }else{
+      console.log("Passwords do not match.")
+    }
+  };
 
   const handleSubmit = () =>{
     console.log("Submitting")
@@ -61,7 +96,7 @@ const RegisterForm: React.FC = () => {
         },
         mode: 'cors',
         body: JSON.stringify({
-          "nickname": nickname, 
+          "username": username, 
           "password": password
         })
       }).then(res => {
@@ -78,7 +113,7 @@ const RegisterForm: React.FC = () => {
     return (
       <IonPage>
         <IonContent>
-          <form onSubmit={handleSubmit}>
+          <Form onSubmit={handleRegister} ref={form}>
           <IonGrid>
             <IonRow className={styles.upperPadding}>
               
@@ -90,7 +125,11 @@ const RegisterForm: React.FC = () => {
               <IonCol size="10">
                 <IonItem>
                   <IonLabel position="floating">Pouzivatelske Meno</IonLabel>
-                  <IonInput name="nickname" onIonInput={(e: any) => setNickname(e.target.value)}></IonInput>
+                  <IonInput
+                    type="text"
+                    name="username"
+                    onIonInput={(e: any) => setUsername(e.target.value)}
+                  />
                 </IonItem>
               </IonCol>
               <IonCol>
@@ -104,7 +143,12 @@ const RegisterForm: React.FC = () => {
               <IonCol size="10">
                 <IonItem>
                   <IonLabel position="floating">Heslo</IonLabel>
-                  <IonInput type="password" onIonInput={(e: any) => setPassword(e.target.value)}></IonInput>
+                  <IonInput
+                  type="password"
+                  name="password"
+                  value={password}
+                  onIonInput={(e: any) => setPassword(e.target.value)}
+                  />
                 </IonItem>
               </IonCol>
               <IonCol>
@@ -118,7 +162,12 @@ const RegisterForm: React.FC = () => {
               <IonCol size="10">
                 <IonItem>
                   <IonLabel position="floating">Zopakuj Heslo</IonLabel>
-                  <IonInput type="password" onIonInput={(e: any) => setSecPassword(e.target.value)}></IonInput>
+                  <IonInput
+                  type="password"
+                  name="password"
+                  value={secpassword}
+                  onIonInput={(e: any) => setSecPassword(e.target.value)}
+                  />
                 </IonItem>
               </IonCol>
               <IonCol>
@@ -135,7 +184,7 @@ const RegisterForm: React.FC = () => {
               <IonCol></IonCol>
             </IonRow>
           </IonGrid>
-          </form>
+          </Form>
           <button className={styles.testbutton} onClick={()=> {
             dispatch(login()) 
             console.log()

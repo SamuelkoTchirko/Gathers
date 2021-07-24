@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { flashOutline } from 'ionicons/icons';
 
 //Redux reducers
-import loggedReducer from "./redux/reducers/loggedReducer"
+import loggedReducer from "./redux/reducers/auth"
 import rootReducer from './redux/reducers';
 
 //Redux imports

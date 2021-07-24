@@ -16,20 +16,18 @@ router.use(function(req, res, next) {
 
 
 
-const User = require("../models/userModel"); 
+const User = require("../database/models/userModel"); 
 
-router.post("/", (req, res) => {
-    req.header("Access-Control-Allow-Origin", "*");
-    console.log(req.body.nickname)
+router.post("/register", (req, res) => {
+    console.log(req.body.username);
     console.log(req.body.password);
-    console.log("haha")
     const user = new User({
-        nickname: req.body.nickname,
+        username: req.body.username,
         password: req.body.password
     })
     user.save((err, newUser) => {
         if(err){
-            console.log("Error "+err);
+            console.log("Error nastal v userController, error: "+err);
         }
     })
     //console.log(user)
