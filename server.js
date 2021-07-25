@@ -13,12 +13,6 @@ const app = express(); // create express app
 //Pouzijeme CORS
 app.use(cors({origin: true}))
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 //Body requestu bude v URLke
 //app.use(express.urlencoded({extended: true}))
 
@@ -28,8 +22,9 @@ app.use(bodyParser.urlencoded({limit:"10mb", extended: true}))
 
 
 //Importujeme userRouter pre cesty s /users ktore bude kontrolovat iny .js subor
-const userRouter = require("./src/controllers/userController.js")
-app.use("/users" , userRouter);
+require("./backend/routes/auth.routes")(app);
+//const userRouter = require("./src/controllers/userController.js")
+//app.use("/users" , userRouter);
 
 
 //Database setup

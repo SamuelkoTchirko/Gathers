@@ -11,10 +11,6 @@ import { createBrowserHistory } from 'history'
 
 //Redux imports
 import { useSelector , useDispatch} from "react-redux"
-//Actions
-import {login} from "../../redux/actions/login"
-import {logout} from "../../redux/actions/logout"
-
 
 
 const ProfilePage: React.FC = () => {
@@ -39,7 +35,6 @@ const ProfilePage: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <button className={styles.logoutButton} onClick={()=> {
-            dispatch(logout()) 
             console.log()
             history.push("/register")
             history.go(0)

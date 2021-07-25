@@ -19,8 +19,9 @@ import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/ProfilePage/ProfilePage';
 import Tab4 from './pages/Tab4';
-import LogRegPage from './pages/LogRegPage/LogRegPage';
 import MainPage from './pages/MainPage/MainPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -48,25 +49,27 @@ import { useSelector } from "react-redux";
 
 const App: React.FC = () => {
 
-  const loggedIn = useSelector((state: any) => state.loggedIn);
+  const isLoggedIn = useSelector((state: any) => state.isLoggedIn);
 
   useEffect(()=>{
     
-  }, [loggedIn])
+  }, [isLoggedIn])
 
   return(
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          {loggedIn ? 
+          {isLoggedIn ? 
           <>
             <Route path="/" component={MainPage} />
             <Route path="/register" component={MainPage} />
+            <Route path="/login" component={MainPage} />
           </>
           :
           <>
-            <Route path="/" component={LogRegPage} />
-            <Route path="/register" component={LogRegPage} />
+            <Route path="/" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/login" component={LoginPage} />
           </>}
         </IonRouterOutlet>
       </IonReactRouter>

@@ -16,7 +16,7 @@ router.use(function(req, res, next) {
 
 
 
-const User = require("../database/models/userModel"); 
+//const User = require("../models/user.model"); 
 
 router.post("/register", (req, res) => {
     console.log(req.body.username);

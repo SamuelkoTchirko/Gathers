@@ -31,6 +31,7 @@
     "express-flash": "0.0.2",
     "express-tsx-views": "^1.2.6",
     "ionicons": "^5.4.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.14",
     "node-sass": "^6.0.0",
     "passport": "^0.4.1",

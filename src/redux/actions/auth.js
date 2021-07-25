@@ -1,33 +1,21 @@
 import AuthService from "../../services/auth.service";
 
   
-export const register = (username, password, dispatch) => {
-
-    return AuthService.register(username, password).then(
-      (response) => {
-        dispatch({
-          type: "REGISTER_SUCCESS",
-        });
+export const register = (username, password) => {
+  return new Promise ((resolve, reject) => {
+    AuthService.register(username, password).then(() => {
+      resolve(true)
+    }).catch((err) => {
+      reject(false)
+    })
+  })
+};
   
-        return Promise.resolve();
-      },
-      (error) => {
-        console.log(error.toString()+" error nastal v actions/auth");
-  
-        dispatch({
-          type: "REGISTER_FAIL",
-        });
-  
-        return Promise.reject();
-      }
-    );
-  };
-  
-  export const login = (username, password) => (dispatch) => {
-    return AuthService.login(username, password).then(
-      (data) => {
-        dispatch({
-          type: "LOGIN_SUCCESS",
+export const login = (username, password) => (dispatch) => {
+  return AuthService.login(username, password).then(
+    (data) => {
+      dispatch({
+        type: "LOGIN_SUCCESS",
           payload: { user: data },
         });
   
@@ -46,9 +34,9 @@ export const register = (username, password, dispatch) => {
         });
   
         return Promise.reject();
-      }
-    );
-  };
+    }
+  );
+};
   
   export const logout = () => (dispatch) => {
     AuthService.logout();

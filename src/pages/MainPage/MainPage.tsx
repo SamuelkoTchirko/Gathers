@@ -19,7 +19,6 @@ import Tab1 from '../Tab1';
 import Tab2 from '../Tab2';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import Tab4 from '../Tab4';
-import LogRegPage from '../LogRegPage/LogRegPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';

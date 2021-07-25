@@ -27,21 +27,19 @@ import App from '../../App';
 
 //Redux
 import { useSelector , useDispatch} from "react-redux"
-//Actions
-import {login} from "../../redux/actions/login"
-import {logout} from "../../redux/actions/logout"
 
+//Actions
 import { register } from "../../redux/actions/auth";
 
 
 const RegisterForm: React.FC = () => {
 
-  const form = useRef() as any;
-  const checkBtn = useRef() as any;
+  //const form = useRef() as any;
+  //const checkBtn = useRef() as any;
 
   const history = createBrowserHistory();
 
-  const isLogged = useSelector((state: any) => state.loggedIn);
+  const isLoggedIn = useSelector((state: any) => state.loggedIn);
 
   const dispatch = useDispatch();
 
@@ -56,64 +54,46 @@ const RegisterForm: React.FC = () => {
 
   const [succesfulLogin, setSuccesfulLogin] = useState(false);
 
-  //useEffect(()=>{
-  //  console.log(succesfulLogin)
-  //}, [succesfulLogin])
+  useEffect(()=>{
+    console.log(successful)
+  }, [successful])
 
-  //useEffect(()=>{
-  //  console.log(password)
-  //}, [password])
+  useEffect(()=>{
+    console.log(isLoggedIn)
+  }, [isLoggedIn])
 
+
+  //Handle registration after submitting the form
   const handleRegister = () => {
 
     setSuccessful(false);
 
-    form.current.validateAll();
+    //form.current.validateAll();
 
     if(password == secpassword){
-      dispatch(register(username , password, dispatch))
-      .then(() => {
+      register(username, password).then(value => {
         setSuccessful(true);
-        console.log("Registration succesful!")
+        console.log("Registration successful!")
+        dispatch({
+          type: "REGISTER_SUCCESS",
+        });
+        history.push("/login")
+        history.go(0)
+      }, reason => {
+        console.log("Registration failed!" + reason)
+        dispatch({
+          type: "REGISTER_FAIL",
+        });
       })
-      .catch(() => {
-        setSuccessful(false);
-      });
     }else{
       console.log("Passwords do not match.")
     }
   };
 
-  const handleSubmit = () =>{
-    console.log("Submitting")
-
-    if(password == secpassword){
-      fetch('http://localhost:8110/users/', {
-        method: 'POST',
-        headers: {
-        "Content-type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-        },
-        mode: 'cors',
-        body: JSON.stringify({
-          "username": username, 
-          "password": password
-        })
-      }).then(res => {
-        res.json()
-      }).then(data => console.log(data))
-      .catch(error => console.log(error))
-      .finally(()=>{
-        
-      })
-    }else{
-      console.log("Hesla sa nezhoduju")
-    }
-  };
     return (
       <IonPage>
         <IonContent>
-          <Form onSubmit={handleRegister} ref={form}>
+          <form>
           <IonGrid>
             <IonRow className={styles.upperPadding}>
               
@@ -179,14 +159,13 @@ const RegisterForm: React.FC = () => {
               <IonCol size="4">
                 <br />
                 <br />
-                <IonButton type="submit" expand="block" fill="outline">Zaregistruj Sa</IonButton>
+                <IonButton onClick={handleRegister} expand="block" fill="outline">Zaregistruj Sa</IonButton>
               </IonCol>
               <IonCol></IonCol>
             </IonRow>
           </IonGrid>
-          </Form>
+          </form>
           <button className={styles.testbutton} onClick={()=> {
-            dispatch(login()) 
             console.log()
             history.push("/")
             history.go(0)
