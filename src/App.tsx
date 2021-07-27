@@ -53,7 +53,7 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 const App: React.FC = () => {
 
-  //const { user: currentUser } = useSelector((state: any) => state.auth);
+  const { user: currentUser } = useSelector((state: any) => state.isLoggedIn);
 
   useEffect(()=>{
     
@@ -63,7 +63,7 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          {true ? 
+          {currentUser ? 
           ( 
             <EntryPage isUser={true} />
           )

@@ -6,6 +6,8 @@ const User = db.user;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
+const config = require("../config/auth.config");
+
 exports.register = (req, res) => {
   const user = new User({
     username: req.body.username,
@@ -24,11 +26,11 @@ exports.register = (req, res) => {
   });
 }
 
-exports.signin = (req, res) => {
+exports.login = (req, res) => {
   User.findOne({
     username: req.body.username
   })
-    .populate("roles", "-__v")
+    .populate("-__v")
     .exec((err, user) => {
       if (err) {
         res.status(500).send({ message: err });
@@ -55,16 +57,10 @@ exports.signin = (req, res) => {
         expiresIn: 86400 // 24 hours
       });
 
-      var authorities = [];
-
-      for (let i = 0; i < user.roles.length; i++) {
-        authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
-      }
       res.status(200).send({
         id: user._id,
         username: user.username,
-        email: user.email,
-        roles: authorities,
+        //email: user.email,
         accessToken: token
       });
     });

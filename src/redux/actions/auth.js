@@ -11,8 +11,16 @@ export const register = (username, password) => {
   })
 };
   
-export const login = (username, password) => (dispatch) => {
-  return AuthService.login(username, password).then(
+export const login = (username, password) => {
+  return new Promise ((resolve, reject) => {
+    AuthService.login(username, password).then((response) => {
+      console.log(response)
+      resolve(response)
+    }).catch((err) => {
+      reject(null)
+    })
+  })
+/*  return AuthService.login(username, password).then(
     (data) => {
       dispatch({
         type: "LOGIN_SUCCESS",
@@ -35,13 +43,13 @@ export const login = (username, password) => (dispatch) => {
   
         return Promise.reject();
     }
-  );
+  );*/
 };
   
-  export const logout = () => (dispatch) => {
-    AuthService.logout();
+export const logout = () => (dispatch) => {
+  AuthService.logout();
   
-    dispatch({
-      type: "LOGOUT",
-    });
-  };
+  dispatch({
+    type: "LOGOUT",
+  });
+};
