@@ -19,9 +19,6 @@ import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/ProfilePage/ProfilePage';
 import Tab4 from './pages/Tab4';
-import MainPage from './pages/MainPage/MainPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -46,31 +43,42 @@ import { renderIntoDocument } from 'react-dom/test-utils';
 //Redux imports
 import { useSelector } from "react-redux";
 
+//Page imports
+import EntryPage from "./pages/EntryPage/EntryPage"
+import MainPage from './pages/MainPage/MainPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+
 
 const App: React.FC = () => {
 
-  const isLoggedIn = useSelector((state: any) => state.isLoggedIn);
+  //const { user: currentUser } = useSelector((state: any) => state.auth);
 
   useEffect(()=>{
     
-  }, [isLoggedIn])
+  }, [])
 
   return(
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          {isLoggedIn ? 
-          <>
-            <Route path="/" component={MainPage} />
-            <Route path="/register" component={MainPage} />
-            <Route path="/login" component={MainPage} />
-          </>
+          {true ? 
+          ( 
+            <EntryPage isUser={true} />
+          )
           :
+          (
+            <EntryPage isUser={false} />
+          )}
+
           <>
-            <Route path="/" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
-            <Route path="/login" component={LoginPage} />
-          </>}
+            <Route exact path={["/", "/home"]} component={EntryPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/register" component={RegisterPage} />
+            <Route exact path="/profile" component={ProfilePage} />
+            <Route exact path="/home" component={MainPage} />
+          </>
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>

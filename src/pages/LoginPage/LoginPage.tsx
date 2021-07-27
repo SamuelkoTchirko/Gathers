@@ -8,9 +8,6 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 //Styling Imports
 import styles from './LoginPage.module.scss';
 
-interface RegisterPageInterface{
-    type: string
-}
 
 const LoginPage: React.FC = () => {
     return(
