@@ -74,6 +74,8 @@ const LoginForm: React.FC = () => {
         type: "LOGIN_SUCCESS",
         payload: { user: value },
       });
+      history.push("/");
+      history.go(0);
     }, reason => {
       console.log("Login failed!" + reason)
       dispatch({

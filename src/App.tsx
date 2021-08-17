@@ -50,6 +50,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 
+import AppWrapper from './AppWrapper';
 
 const App: React.FC = () => {
 
@@ -63,19 +64,11 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          {currentUser ? 
-          ( 
-            <EntryPage isUser={true} />
-          )
-          :
-          (
-            <EntryPage isUser={false} />
-          )}
-
           <>
             <Route exact path={["/", "/home"]} component={EntryPage} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/register" component={RegisterPage} />
+            <Route path ="/" component={AppWrapper}  />
             <Route exact path="/profile" component={ProfilePage} />
             <Route exact path="/home" component={MainPage} />
           </>

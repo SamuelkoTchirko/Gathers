@@ -1,0 +1,3 @@
+startup:
+ionic serve
+npm run devStart
