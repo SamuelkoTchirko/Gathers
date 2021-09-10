@@ -1,0 +1,38 @@
+
+.wrapper{
+    min-height: 10vh;
+    max-height: 10vh;
+    min-width: 100vw;
+    z-index: 10;
+    position: fixed;
+    bottom: 0;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    //background-color: white;
+    //filter: blur(2px);
+    //opacity: 1;
+    background-color: rgba(0,0,0,0.3);
+
+    .icons{
+        height: 10vh;
+        width: 100vw;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+
+        a{
+            height: 5vh;
+            width: 28vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .icon{
+                height: 5vh;
+                width: 15vw;
+            }
+        }
+    }
+}
