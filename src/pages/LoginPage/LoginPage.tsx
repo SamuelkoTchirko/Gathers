@@ -13,6 +13,7 @@ const LoginPage: React.FC = () => {
     return(
         <IonPage>
             <IonContent fullscreen>
+            <a href="/register">Zaregistruj sa</a>
                 <LoginForm />
             </IonContent>
         </IonPage>

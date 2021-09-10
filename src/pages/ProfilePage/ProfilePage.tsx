@@ -12,10 +12,18 @@ import { createBrowserHistory } from 'history'
 //Redux imports
 import { useSelector , useDispatch} from "react-redux"
 
+//Components
+import Header from "../../components/Header/Header"
+import Navigation from "../../components/Navigation/Navigation"
+
+//Actions
+import { logout } from "../../redux/actions/auth";
+
 
 const ProfilePage: React.FC = () => {
 
   const isLogged = useSelector((state: any) => state.loggedIn);
+  const user = JSON.parse(localStorage.getItem('user') as string);
   const dispatch = useDispatch();
 
   const history = createBrowserHistory();
@@ -24,22 +32,26 @@ const ProfilePage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>Profil</IonTitle>
-        </IonToolbar>
+        <Header title={user.username}></Header>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Profil</IonTitle>
+            <IonTitle size="large">profil</IonTitle>
           </IonToolbar>
         </IonHeader>
         <button className={styles.logoutButton} onClick={()=> {
-            console.log()
-            history.push("/register")
-            history.go(0)
-          }}>lubim ta</button>
+            if(logout()){
+              dispatch({
+                type: "LOGOUT",
+              });
+              console.log("Log out pressed")
+              history.push("/register")
+              history.go(0)
+            }
+          }}>odhlasit sa</button>
         <ExploreContainer name="Profil page" />
+        <Navigation></Navigation>
       </IonContent>
     </IonPage>
   );

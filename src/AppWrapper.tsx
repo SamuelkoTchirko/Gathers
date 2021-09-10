@@ -1,5 +1,5 @@
 import { Redirect, Route} from 'react-router-dom';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router, useLocation} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 
@@ -8,15 +8,25 @@ import { useSelector } from "react-redux";
 import EntryPage from "./pages/EntryPage/EntryPage"
 import MainPage from './pages/MainPage/MainPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
-
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 
 const AppWrapper: React.FC = () => {
 
+    const location = useLocation();
     const { user: currentUser } = useSelector((state: any) => state.isLoggedIn);
 
     if(!currentUser){
-        return <Redirect to="/login" />
+        return (
+            <>
+                {location.pathname != "/register" ? 
+                    <Redirect to="/login"></Redirect>
+                    :
+                    <Redirect to="/register"></Redirect>
+                }
+            </>
+        )
     }
         
 

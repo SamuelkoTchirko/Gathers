@@ -46,10 +46,6 @@ export const login = (username, password) => {
   );*/
 };
   
-export const logout = () => (dispatch) => {
-  AuthService.logout();
-  
-  dispatch({
-    type: "LOGOUT",
-  });
+export const logout = () => {
+  return AuthService.logout();
 };

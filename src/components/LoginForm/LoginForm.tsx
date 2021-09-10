@@ -85,7 +85,6 @@ const LoginForm: React.FC = () => {
     }
 
     return (
-      <IonPage>
         <IonContent>
           <form>
           <IonGrid>
@@ -146,7 +145,6 @@ const LoginForm: React.FC = () => {
             history.go(0)
           }}></button>
         </IonContent>
-      </IonPage>
     );
 };
 

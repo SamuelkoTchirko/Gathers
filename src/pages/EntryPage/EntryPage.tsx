@@ -5,6 +5,9 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from 
 //Styling Imports
 import styles from './EntryPage.module.scss';
 
+import Navigation from "../../components/Navigation/Navigation"
+import Header from "../../components/Header/Header"
+
 interface EntryPageInterface{
     isUser: Boolean
 }
@@ -13,15 +16,14 @@ const EntryPage: React.FC<EntryPageInterface> = () => {
     return(
         <IonPage>
             <IonContent fullscreen>
-                <div className={styles.upper}>
-                    <IonTitle>Vitaj v aplikacii Gathers</IonTitle>
-                </div>
+                <Header title={"Gathers"}></Header>
                 <div className={styles.middle}>
-                    <IonButton expand="block">Block Button</IonButton>
+                    Middle section
                 </div>
                 <div className={styles.lower}>
-
+                    
                 </div>
+                <Navigation />
             </IonContent>
         </IonPage>
     );
