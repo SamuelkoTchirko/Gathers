@@ -11,7 +11,7 @@ const config = require("../config/auth.config");
 exports.register = (req, res) => {
   const user = new User({
     username: req.body.username,
-    //email: req.body.email,
+    email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10)
   });
 
@@ -60,7 +60,7 @@ exports.login = (req, res) => {
       res.status(200).send({
         id: user._id,
         username: user.username,
-        //email: user.email,
+        email: user.email,
         accessToken: token
       });
     });

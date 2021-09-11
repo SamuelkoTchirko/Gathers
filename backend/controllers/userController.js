@@ -23,6 +23,7 @@ router.post("/register", (req, res) => {
     console.log(req.body.password);
     const user = new User({
         username: req.body.username,
+        email: req.body.email,
         password: req.body.password
     })
     user.save((err, newUser) => {
@@ -33,4 +34,4 @@ router.post("/register", (req, res) => {
     //console.log(user)
 })
 
-module.exports = router;
+//module.exports = router;

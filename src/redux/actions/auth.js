@@ -1,9 +1,9 @@
 import AuthService from "../../services/auth.service";
 
   
-export const register = (username, password) => {
+export const register = (username, email, password) => {
   return new Promise ((resolve, reject) => {
-    AuthService.register(username, password).then(() => {
+    AuthService.register(username, email, password).then(() => {
       resolve(true)
     }).catch((err) => {
       reject(false)

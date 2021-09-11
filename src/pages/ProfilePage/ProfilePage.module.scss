@@ -1,5 +1,46 @@
-.logoutButton{
-    min-height: 100px;
-    min-width: 300px;
-    background-color: pink;
+
+.content_wrapper{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .profilepic_wrapper{
+        background-color: #A31621;
+        height: 15vh;
+        width: 100vw;
+        //display: flex;
+        //justify-content: center;
+
+        .avatar {
+            position: relative;
+            top: 18%;
+            vertical-align: middle;
+            //width: 22vw;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20vh;
+            border-radius: 50%;
+        }
+    }
+
+    .info_wrapper{
+        margin-top: 12vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .email{
+            position: relative;
+            bottom: 3vh;
+            font-size: medium;
+            color: rgb(68, 68, 68);
+        }
+    }
+
+    .logout_button{
+        width: 70vw;
+    }
 }
+

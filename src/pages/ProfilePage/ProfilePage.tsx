@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
 import ExploreContainer from '../../components/ExploreContainer/ExploreContainer';
 
 //Styles
@@ -19,6 +19,9 @@ import Navigation from "../../components/Navigation/Navigation"
 //Actions
 import { logout } from "../../redux/actions/auth";
 
+//Images
+import default_avatar from '../../assets/png/img_avatar.png'; 
+
 
 const ProfilePage: React.FC = () => {
 
@@ -32,7 +35,7 @@ const ProfilePage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <Header title={user.username}></Header>
+        <Header title="Profil"></Header>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
@@ -40,7 +43,15 @@ const ProfilePage: React.FC = () => {
             <IonTitle size="large">profil</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <button className={styles.logoutButton} onClick={()=> {
+        <div className={styles.content_wrapper}>
+          <div className={styles.profilepic_wrapper}>
+            <img src={default_avatar} alt="Avatar" className={styles.avatar} />
+          </div>
+          <div className={styles.info_wrapper}>
+            <h2 className={styles.username} ><strong>{user.username}</strong></h2>
+            <h4 className={styles.email} >{user.email}</h4>
+          </div>
+          <IonButton className={styles.logout_button}onClick={() => {
             if(logout()){
               dispatch({
                 type: "LOGOUT",
@@ -49,8 +60,14 @@ const ProfilePage: React.FC = () => {
               history.push("/register")
               history.go(0)
             }
-          }}>odhlasit sa</button>
-        <ExploreContainer name="Profil page" />
+          }} color="danger" fill="outline" expand="block">Odhlásiť sa</IonButton>
+
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <Navigation></Navigation>
       </IonContent>
     </IonPage>

@@ -8,7 +8,10 @@ import Form from 'react-validation/build/form';
 import Input from "react-validation/build/input";
 // @ts-ignore
 import CheckButton from "react-validation/build/button";
+// @ts-ignore
+import validator from 'validator'
 /* eslint-enable */
+
 
 import {
   BrowserRouter as Router,
@@ -18,7 +21,7 @@ import {
 } from "react-router-dom";
 import { createBrowserHistory } from 'history'
 
-import { IonButton, IonGrid, IonCol, IonRow, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonItem, IonLabel, IonList, IonItemDivider } from '@ionic/react';
+import { useIonToast, IonButton, IonGrid, IonCol, IonRow, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonItem, IonLabel, IonList, IonItemDivider } from '@ionic/react';
 import styles from './RegisterForm.module.scss';
 import axios from "axios"
 
@@ -43,10 +46,35 @@ const RegisterForm: React.FC = () => {
 
   const dispatch = useDispatch();
 
+  const [present, dismiss] = useIonToast();
+
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [secpassword, setSecPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
+
+  const [emailError, setEmailError] = useState('')
+
+  const validateEmail = () => {
+    if (validator.isEmail(email)) {
+      setEmailError('Valid Email')
+      return true
+    } else {
+      setEmailError('Zadaj spravny format emailu!')
+      return false
+    }
+  }
+
+  const emailErrorToast = () => {
+    present({
+      buttons: [{ text: 'Zatvor', handler: () => dismiss() }],
+      message: 'Zadaj email v správnom formáte!',
+      onDidDismiss: () => console.log('dismissed'),
+      onWillDismiss: () => console.log('will dismiss'),
+      color: "danger"
+    })
+  }
 
   //function redirectOnRegister(){
   //  return <Redirect to={"/tab2"} />
@@ -69,24 +97,28 @@ const RegisterForm: React.FC = () => {
     setSuccessful(false);
 
     //form.current.validateAll();
-
-    if(password == secpassword){
-      register(username, password).then(value => {
-        setSuccessful(true);
-        console.log("Registration successful!")
-        dispatch({
-          type: "REGISTER_SUCCESS",
-        });
-        history.push("/login")
-        history.go(0)
-      }, reason => {
-        console.log("Registration failed!" + reason)
-        dispatch({
-          type: "REGISTER_FAIL",
-        });
-      })
+    if (validateEmail()){
+      if(password == secpassword){
+        register(username, email, password).then(value => {
+          setSuccessful(true);
+          console.log("Registration successful!")
+          dispatch({
+            type: "REGISTER_SUCCESS",
+          });
+          history.push("/login")
+          history.go(0)
+        }, reason => {
+          console.log("Registration failed!" + reason)
+          dispatch({
+            type: "REGISTER_FAIL",
+          });
+        })
+      }else{
+        console.log("Passwords do not match.")
+      }
     }else{
-      console.log("Passwords do not match.")
+      console.log("Nespravny email")
+      emailErrorToast()
     }
   };
 
@@ -109,6 +141,24 @@ const RegisterForm: React.FC = () => {
                     type="text"
                     name="username"
                     onIonInput={(e: any) => setUsername(e.target.value)}
+                  />
+                </IonItem>
+              </IonCol>
+              <IonCol>
+  
+              </IonCol>
+            </IonRow>
+            <IonRow>
+              <IonCol>
+          
+              </IonCol>
+              <IonCol size="10">
+                <IonItem>
+                  <IonLabel position="floating">Email</IonLabel>
+                  <IonInput
+                    type="email"
+                    name="email"
+                    onIonInput={(e: any) => setEmail(e.target.value)}
                   />
                 </IonItem>
               </IonCol>
