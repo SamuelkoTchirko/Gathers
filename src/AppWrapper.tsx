@@ -10,6 +10,7 @@ import MainPage from './pages/MainPage/MainPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import EventPage from "./pages/EventPage/EventPage"
 
 
 const AppWrapper: React.FC = () => {
@@ -35,6 +36,7 @@ const AppWrapper: React.FC = () => {
         <Route exact path={["/", "/home"]} component={EntryPage} />
         <Route exact path="/profile" component={ProfilePage} />
         <Route exact path="/home" component={MainPage} />
+        <Route exact path="/events" component={EventPage} />
     </div>
    );
 }

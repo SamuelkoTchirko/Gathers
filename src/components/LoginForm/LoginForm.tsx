@@ -61,10 +61,17 @@ const LoginForm: React.FC = () => {
     console.log(isLoggedIn)
   }, [isLoggedIn])
 
+  useEffect(()=>{
+    console.log(username)
+  }, [username])
+
+  useEffect(()=>{
+    console.log(password)
+  }, [password])
 
   //Handle login after submitting the form
   const handleLogin = () => {
-
+    console.log("Attempting login")
     setSuccessful(false);
 
     login(username, password).then(value => {
@@ -85,66 +92,23 @@ const LoginForm: React.FC = () => {
     }
 
     return (
-        <IonContent>
-          <form>
-          <IonGrid>
-            <IonRow className={styles.upperPadding}>
-              
-            </IonRow>
-            <IonRow>
-              <IonCol>
-          
-              </IonCol>
-              <IonCol size="10">
-                <IonItem>
-                  <IonLabel position="floating">Pouzivatelske Meno</IonLabel>
-                  <IonInput
-                    type="text"
-                    name="username"
-                    onIonInput={(e: any) => setUsername(e.target.value)}
-                  />
-                </IonItem>
-              </IonCol>
-              <IonCol>
-  
-              </IonCol>
-            </IonRow>
-            <IonRow>
-              <IonCol>
-  
-              </IonCol>
-              <IonCol size="10">
-                <IonItem>
-                  <IonLabel position="floating">Heslo</IonLabel>
-                  <IonInput
-                  type="password"
-                  name="password"
-                  value={password}
-                  onIonInput={(e: any) => setPassword(e.target.value)}
-                  />
-                </IonItem>
-              </IonCol>
-              <IonCol>
-  
-              </IonCol>
-            </IonRow>
-            <IonRow>
-              <IonCol></IonCol>
-              <IonCol size="4">
-                <br />
-                <br />
-                <IonButton onClick={handleLogin} expand="block" fill="outline">Prihlas Sa</IonButton>
-              </IonCol>
-              <IonCol></IonCol>
-            </IonRow>
-          </IonGrid>
-          </form>
-          <button className={styles.testbutton} onClick={()=> {
-            console.log()
-            history.push("/")
-            history.go(0)
-          }}></button>
-        </IonContent>
+        <div className={styles.wrapper}>
+          <div className={styles.form_wrapper}>
+            <form>
+              <div className={styles.padding}></div>
+              <label className={styles.field}>
+                <input type="text" placeholder=" " onChange={(e: any) => setUsername(e.target.value)}/>
+                <span className={styles.placeholder}>Pouzivatelske meno</span>
+              </label>
+              <label className={styles.field}>
+                <input type="password" placeholder=" " onChange={(e: any) => setPassword(e.target.value)}/>
+                <span className={styles.placeholder}>Heslo</span>
+              </label>  
+              <div className={styles.padding}></div>
+              <button type="button" onClick={handleLogin}>Prihlas Sa</button>
+            </form>
+          </div>
+        </div>
     );
 };
 

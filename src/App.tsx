@@ -45,6 +45,7 @@ import { useSelector } from "react-redux";
 
 //Page imports
 import EntryPage from "./pages/EntryPage/EntryPage"
+import EventPage from "./pages/EventPage/EventPage"
 import MainPage from './pages/MainPage/MainPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
@@ -71,6 +72,7 @@ const App: React.FC = () => {
             <Route path ="/" component={AppWrapper}  />
             <Route exact path="/profile" component={ProfilePage} />
             <Route exact path="/home" component={MainPage} />
+            <Route exact path="/events" component={EventPage} />
           </>
         </IonRouterOutlet>
       </IonReactRouter>

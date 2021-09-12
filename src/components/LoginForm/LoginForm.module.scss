@@ -1,3 +1,220 @@
-.nickname{
-    color: green;
+
+.form_wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	//position: relative;
+	//top: 25%;
+
+	form{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	button{
+		color: white;
+		font-size: 16px;
+		//font-weight: bolder;
+		background-color: #A31621;
+		border: solid 1px #A31621;
+		display: block;
+		margin-top: 3vh;
+		width: 60%;
+		height: 8vh;
+		margin-bottom: 5vh;
+		border-radius: 12px;
+	}
+}
+
+.field {
+	position: relative;
+	font-size: 16px;
+	border-top: 20px solid transparent;
+	margin-bottom: 5px;
+	--field-padding: 12px;
+  }
+  
+  .field input {
+	border: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: #f2f2f2;
+	padding: var(--field-padding);
+	border-radius: 3px;
+	width: 70vw;
+	outline: none;
+	font-size: 14px;
+  }
+  
+  .field .placeholder {
+	position: absolute;
+	left: var(--field-padding);
+	width: calc(100% - (var(--field-padding) * 2));
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	top: 50%;
+	line-height: 100%;
+	transform: translateY(-50%);
+	color: #aaa;
+	transition: 
+	  top 0.3s ease,
+	  color 0.3s ease,
+	  font-size 0.3s ease;
+  }
+  
+  .field input.dirty + .placeholder,
+  .field input:focus + .placeholder,
+  .field input:not(:placeholder-shown) + .placeholder {
+	top: -10px;
+	font-size: 10px;
+	color: #222;
+  }
+  
+  .field .error-message {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	padding: 0 8px;
+	font-size: 12px;
+	background: #d30909;
+	color: #fff;
+	height: 24px;
+  }
+  
+  .field .error-message:empty {
+	opacity: 0;
+  }
+  
+  /* ONE */
+  .field input {
+	background: none;
+	border: 2px solid #ddd;
+	transition: border-color 0.3s ease;
+  }
+  
+  .field input + .placeholder {
+	left: 8px;
+	padding: 0 5px;
+  }
+  
+  .field input.dirty,
+  .field input:not(:placeholder-shown),
+  .field input:focus {
+	border-color: #222;
+	transition-delay: 0.1s
+  }
+  
+  .field input.dirty + .placeholder,
+  .field input:not(:placeholder-shown) + .placeholder,
+  .field input:focus + .placeholder {
+	top: 0;
+	font-size: 10px;
+	color: #222;
+	background: #fff;
+	width: auto
+  }
+  
+  /* TWO */
+  .field.two input {
+	border-radius: 0;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	background:
+	  linear-gradient(90deg, #222, #222) center bottom/0 0.15em no-repeat,
+	  linear-gradient(90deg, #ccc, #ccc) left bottom/100% 0.15em no-repeat,
+	  linear-gradient(90deg, #fafafa, #fafafa) left bottom/100% no-repeat;
+	transition: background-size 0.3s ease;
+  }
+  
+  .field.two input.dirty,
+  .field.two input:not(:placeholder-shown),
+  .field.two input:focus {
+	background-size: 100% 0.15em, 100% 0.1em, 100%;
+  }
+  
+  /* THREE */
+  .field.three {
+	--draw-duration: 0.1s;
+	--draw-color: #222;
+	--draw-line-width: 2px;
+	--draw-easing: linear;
+  }
+  
+  .field.three .border {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform: none;
+	display: flex;
+	align-items: center;
+	padding-left: 12px;
+	borde-radius: 3px;
+  }
+  
+  .field.three .border::after, 
+  .field.three .border::before {
+	content: "";
+	width: 0;
+	height: 0;
+	display: inline-block;
+	position: absolute;
+	border-radius: 3px;
+  }
+  
+  .field.three .border::before {
+	left: 0;
+	bottom: 0;
+	border-right: 0px solid var(--draw-color);
+	border-bottom: 0px solid var(--draw-color);
+	transition: 
+	  border 0s linear calc(var(--draw-duration) * 4),
+	  height var(--draw-duration) var(--draw-easing) calc(var(--draw-duration) * 2),
+	  width var(--draw-duration) var(--draw-easing) calc(var(--draw-duration) * 3);
+  }
+  
+  .field.three .border::after {
+	right: 0;
+	top: 0;
+	border-left: 0px solid var(--draw-color);
+	border-top: 0px solid var(--draw-color);
+	transition: 
+	  border 0s linear calc(var(--draw-duration) * 2),
+	  height var(--draw-duration) var(--draw-easing),
+	  width var(--draw-duration) var(--draw-easing) var(--draw-duration);
+  }
+  
+  .field.three input:focus ~ .border::before,
+  .field.three input:not(:placeholder-shown) ~ .border::before,
+  .field.three input.dirty ~ .border::before,
+  .field.three input:focus ~ .border::after,
+  .field.three input:not(:placeholder-shown) ~ .border::after,
+  .field.three input.dirty ~ .border::after {
+	width: 100%;
+	height: 100%;
+	border-width: var(--draw-line-width);
+  }
+  
+  .field.three input:not(:placeholder-shown) ~ .border::before,
+  .field.three input.dirty ~ .border::before,
+  .field.three input:focus ~ .border::before {
+	transition-delay: 0s, var(--draw-duration), 0s;
+  }
+  
+  .field.three input:not(:placeholder-shown) ~ .border::after,
+  .field.three input.dirty ~ .border::after,
+  .field.three input:focus ~ .border::after {
+	transition-delay: 
+	  calc(var(--draw-duration) * 2), 
+	  calc(var(--draw-duration) * 3), 
+	  calc(var(--draw-duration) * 2);
+  }
+
+.padding{
+	height: 5vh;
 }

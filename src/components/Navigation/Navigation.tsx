@@ -2,9 +2,9 @@ import styles from './Navigation.module.scss';
 import React from 'react';
 
 //Icons
-import { ReactComponent as HomeIcon } from "../../assets/svg/home.svg";
-import { ReactComponent as CalendarIcon } from "../../assets/svg/calendar.svg";
-import { ReactComponent as ProfileIcon } from "../../assets/svg/user-1.svg";
+import { ReactComponent as HomeIcon } from "../../assets/svg/195-house.svg";
+import { ReactComponent as CalendarIcon } from "../../assets/svg/140-education-1.svg";
+import { ReactComponent as ProfileIcon } from "../../assets/svg/148-user-2.svg";
 //import { ReactComponent as HomeIcon } from "../../assets/svg/009-home.svg";
 
 
