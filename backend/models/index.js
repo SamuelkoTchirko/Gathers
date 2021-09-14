@@ -6,7 +6,8 @@ const db = {};
 db.mongoose = mongoose;
 
 db.user = require("./user.model");
-//db.role = require("./role.model");
+db.event = require("./event.model");
+db.event_participant = require("./event_participant.model")
 
 //db.ROLES = ["user", "admin", "moderator"];
 
