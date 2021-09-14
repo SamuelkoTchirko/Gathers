@@ -11,7 +11,7 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     creator_id: {
-        type: int,
+        type: Number,
         required: true
     },
     date_end: {

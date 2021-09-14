@@ -51,10 +51,4 @@ db.once('open', () => {
     console.log('Connected to Mongoose');
 });
 
-
-//Testing routes
-app.get("/user/logged", function(req, res) {  
-  res.send(false);
-})
-
 app.listen(8110)

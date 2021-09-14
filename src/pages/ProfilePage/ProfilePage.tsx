@@ -60,7 +60,7 @@ const ProfilePage: React.FC = () => {
               history.push("/register")
               history.go(0)
             }
-          }} color="danger" fill="outline" expand="block">Odhlásiť sa</IonButton>
+          }} color="#FF7B00" fill="outline" expand="block">Odhlásiť sa</IonButton>
 
         </div>
         <br />

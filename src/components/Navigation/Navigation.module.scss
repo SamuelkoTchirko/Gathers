@@ -18,21 +18,48 @@
         width: 100vw;
 
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         flex-direction: row;
         align-items: center;
 
         a{
-            height: 5vh;
-            width: 28vw;
+            height: 4vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
 
-            .icon{
-                height: 5vh;
-                width: 15vw;
+            img{
+                height: 4vh;
             }
+
+            .add_icon{
+                position: relative;
+                bottom: 125%;
+                height: 15vh;
+                background-color: white;
+            }
+
+            .home_icon{
+                position: relative;
+                left: 2.1vw;
+            }
+
+            .events_icon{
+                position: relative;
+                left: 5.8vw;
+            }
+            
+            .profile_icon{
+                position: relative;
+                right: 5.8vw;
+            }
+
+            .settings_icon{
+                position: relative;
+                right: 2.1vw;
+            }
+
         }
     }
 }

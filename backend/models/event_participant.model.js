@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 
 const eventParticipantSchema = new mongoose.Schema({
     event_id: {
-        type: int,
+        type: Number,
         required: true
     },
     participant_id: {
-        type: int,
+        type: Number,
         required: true
     }
 })
