@@ -34,14 +34,6 @@ const NewEventPage: React.FC = () => {
     const [endDate, setEndDate] = useState(new Date());
     const [public_event, setPublic] = useState(false);
 
-    useEffect(()=>{
-        console.log(startDate)
-    }, [startDate])
-
-    useEffect(()=>{
-        console.log(public_event)
-    }, [public_event])
-
     const handleCreate = () => {
         console.log("Attempting event creation")
 

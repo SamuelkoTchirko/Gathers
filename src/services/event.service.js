@@ -27,6 +27,21 @@ const create = (title, date_start, date_end, public_event) => {
   })
 };
 
+const deleteEvent = (id) => {
+  console.log("Deleting event...")
+
+  return axios.delete(API_URL + "events/" + id, {
+    headers: setTokenHeader()
+  })
+};
+
+const getMyEvents = () => {
+  console.log("Getting events of the current user...")
+
+  return axios.get(API_URL + "events", {
+    headers: setTokenHeader()
+  })
+};
 
 
 const login = (username, password) => {
@@ -56,5 +71,7 @@ const logout = () => {
 
 
 export default {
-  create
+  create,
+  deleteEvent,
+  getMyEvents
 };

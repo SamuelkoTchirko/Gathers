@@ -9,6 +9,7 @@ var jwt = require("jsonwebtoken");
 
 //const config = require("../config/auth.config");
 
+
 exports.create = (req, res) => {
   const event = new Event({
     title: req.body.title,
@@ -30,41 +31,39 @@ exports.create = (req, res) => {
   });
 }
 
-exports.login = (req, res) => {
-  User.findOne({
-    username: req.body.username
-  })
-    .populate("-__v")
-    .exec((err, user) => {
-      if (err) {
-        res.status(500).send({ message: err });
-        return;
-      }
-
-      if (!user) {
-        return res.status(404).send({ message: "User Not found." });
-      }
-
-      var passwordIsValid = bcrypt.compareSync(
-        req.body.password,
-        user.password
-      );
-
-      if (!passwordIsValid) {
-        return res.status(401).send({
-          accessToken: null,
-          message: "Invalid Password!"
-        });
-      }
-
-      //Treba nastavit expiration time -- { expiresIn: 86400 } -- 24hodin
-      var token = jwt.sign({ id: user.id }, config.secret);
-
-      res.status(200).send({
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        accessToken: token
+exports.delete = (req, res) => {
+  var id = verify_token.verify(req.get("x-access-token")).id;
+  Event.findById(req.params.id, "creator_id", function (err, data) {
+    if(err){
+      console.log(err)
+      return
+    }else{
+      return data
+    }
+  }).then((data, err) => {
+    if(id != data.creator_id){
+      console.log("Tento event moze vymazat iba jeho spravca")
+      return res.status(400).send("Tento event moze vymazat iba jeho spravca");
+    }else{
+      Event.findByIdAndDelete(req.params.id, function (err, data) {
+        if(err){
+          console.log(err)
+          return;
+        }else{
+          res.send(data)
+        }
       });
-    });
-};
+    }
+  });
+}
+
+exports.getMyEvents = (req, res) => {
+  Event.find({ creator_id: verify_token.verify(req.get("x-access-token")).id}, function (err, data) {
+    if(err){
+      console.log(err)
+      return;
+    }else{
+      res.send(data)
+    }
+  });
+}

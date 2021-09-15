@@ -10,4 +10,25 @@ export const create = (title, date_start, date_end, public_event) => {
     })
   })
 };
+
+export const deleteEvent = (id) => {
+  return new Promise ((resolve, reject) => {
+    EventService.deleteEvent(id).then((data) => {
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+};
+
+export const getMyEvents = () => {
+  return new Promise ((resolve, reject) => {
+    EventService.getMyEvents().then((data) => {
+      console.log(data)
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+};
   
