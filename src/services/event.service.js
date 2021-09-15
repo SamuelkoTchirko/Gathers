@@ -4,14 +4,26 @@ const API_URL = "http://localhost:8110/";
 
 const tokenHeader = require("./auth.header")
 
-const create = (title, date_start, date_end) => {
+function setTokenHeader(){
+  const user = JSON.parse(localStorage.getItem("user"));
+  
+  if (user && user.accessToken) {
+    return { "x-access-token": user.accessToken };
+  } else {
+    return {};
+  }
+}
+
+const create = (title, date_start, date_end, public_event) => {
   console.log("Starting creation of the event...")
+
   return axios.post(API_URL + "events/create", {
     title,
     date_start,
-    date_end
+    date_end, 
+    public_event
   },{
-    headers: tokenHeader.setTokenHeader
+    headers: setTokenHeader()
   })
 };
 

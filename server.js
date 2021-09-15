@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({limit:"10mb", extended: true}))
 
 //Importujeme userRouter pre cesty s /users ktore bude kontrolovat iny .js subor
 require("./backend/routes/auth.routes")(app);
+require("./backend/routes/event.routes")(app);
 //const userRouter = require("./src/controllers/userController.js")
 //app.use("/users" , userRouter);
 

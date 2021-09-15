@@ -9,8 +9,13 @@ interface I_Header{
 const Header: React.FC<I_Header> = (props) => {
   return (
     <>
-        <div className={styles.upper}>
-            <h1 className={styles.title}>{props.title}</h1>
+        <div className={styles.header}>
+          <div className={styles.svg_wrapper}>
+            <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+              <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"></path>
+            </svg>
+          </div>
+          <h1>{props.title}</h1>
         </div>
     </>
   );

@@ -16,14 +16,7 @@ const EventPage: React.FC = () => {
     return(
         <IonPage>
             <IonContent fullscreen>
-                <div className={styles.header}>
-                    <div className={styles.svg_wrapper}>
-                        <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
-                            <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"></path>
-                        </svg>
-                    </div>
-                    <h1>Events</h1>
-                </div>
+                <Header title="Eventy"></Header>
                 <div className={styles.middle}>
                     Middle section
                 </div>

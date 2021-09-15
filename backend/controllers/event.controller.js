@@ -14,16 +14,18 @@ exports.create = (req, res) => {
     title: req.body.title,
     date_start: req.body.date_start,
     date_end: req.body.date_end,
-    creator_id: verify_token.verify(req.get("x-access-token")).id
+    creator_id: verify_token.verify(req.get("x-access-token")).id,
+    public_event: req.body.public_event
   });
 
   event.save((err, event) => {
     if (err) {
-      res.status(500).send({ message: err });
+      res.status(500);
+      console.log("Event failed to save to database!" + err);
       return;
-    }else{
+    }else{ 
         res.status(200);
-        console.log("Event was registered succesfully!");
+        console.log("Event was saved to database succesfully!");
     }
   });
 }

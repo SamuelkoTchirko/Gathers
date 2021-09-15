@@ -11,11 +11,15 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     creator_id: {
-        type: Number,
+        type: String,
         required: true
     },
     date_end: {
         type: Date,
+        required: true
+    },
+    public_event: {
+        type: Boolean,
         required: true
     }
 })

@@ -12,7 +12,7 @@ module.exports = function(app) {
 
   app.post("/events/create", controller.create);
 
-  app.post("/events/:event_id/delete", controller.delete);
+  //app.post("/events/:event_id/delete", controller.delete);
 
-  app.post("/events/:event_id/update", controller.update);
+  //app.post("/events/:event_id/update", controller.update);
 };
