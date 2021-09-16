@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
 
+
+import SportIcon from "../../../assets/png/sport.png";
+
 //Styling Imports
 import styles from './EventWrapper.module.scss';
 
@@ -33,15 +36,16 @@ const EventWrapper: React.FC<I_EventWrapper> = (props) => {
     return(
         <>
             <div className={styles.wrapper}>
+                <img className={styles.icon} src={SportIcon} alt="" />
                 <div className={styles.details_wrapper}>
-                    <h1>{props.title}</h1>
-                    <h3>{props.date_start}</h3>
-                    <h3>{props.date_end}</h3>
-                    <h4>Správca: {props.creator}</h4>
-                    <h4>Verejný: {props.public_event ? "Áno" : "Nie"}</h4>
+                    <ul>
+                        <li><h1>{props.title}</h1></li>
+                        <li><h4>{props.public_event ? "Verejný" : "Súkromný"}</h4></li>
+                        <li><h4>Správca: {props.creator}</h4></li>
+                    </ul>
                 </div>
                 <div className={styles.right_wrapper}>
-                    <button onClick={deleteCurrent}>Vymaž</button>
+                    <button onClick={deleteCurrent}>X</button>
                 </div>
             </div>
         </>

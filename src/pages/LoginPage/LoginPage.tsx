@@ -18,7 +18,7 @@ const LoginPage: React.FC = () => {
             <IonContent fullscreen>
                 <Header title="Login"></Header>
                 <div className={styles.wrapper}>
-                    <h1>Vitaj späť!</h1>
+                    <h1></h1>
                     <LoginForm />
                     <a href="/register">Zaregistruj sa</a>
                 </div>

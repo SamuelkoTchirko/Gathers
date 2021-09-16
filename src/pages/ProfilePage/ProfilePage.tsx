@@ -44,9 +44,6 @@ const ProfilePage: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <div className={styles.content_wrapper}>
-          <div className={styles.profilepic_wrapper}>
-            <img src={default_avatar} alt="Avatar" className={styles.avatar} />
-          </div>
           <div className={styles.info_wrapper}>
             <h2 className={styles.username} ><strong>{user.username}</strong></h2>
             <h4 className={styles.email} >{user.email}</h4>
