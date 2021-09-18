@@ -8,6 +8,23 @@
     align-items: center;
     flex-direction: column;
 
+    .back_button{
+        color: white;
+        font-size: 16px;
+        //font-weight: bolder;
+        background-color: #FF7B00;
+        border: solid 1px #FF7B00;
+        //display: block;
+        //margin-top: 3vh;
+        width: 20vw;
+        height: 6vh;
+        //margin-bottom: 5vh;
+        border-radius: 10px;
+        position: absolute;
+        top: 6vh;
+        left: 12vw;
+    }
+
     .input_wrapper{
         width: 100%;
         display: flex;
@@ -31,18 +48,61 @@
         }
     }
 
-    button{
+    .query_button{
         color: white;
-            font-size: 16px;
-            //font-weight: bolder;
-            background-color: #FF7B00;
-            border: solid 1px #FF7B00;
-            display: block;
-            margin-top: 3vh;
-            width: 60%;
-            height: 8vh;
-            margin-bottom: 5vh;
-            border-radius: 12px;
+        font-size: 16px;
+        //font-weight: bolder;
+        background-color: #FF7B00;
+        border: solid 1px #FF7B00;
+        display: block;
+        margin-top: 3vh;
+        width: 60%;
+        height: 8vh;
+        margin-bottom: 5vh;
+        border-radius: 12px;
+    }
+
+    .results_wrapper{
+        //background-color: gray;
+        width: 70vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .result{
+            margin-bottom: 4vh;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+            width: 100%;
+            height: 7vh;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+
+            h2{
+                position: relative;
+                bottom: 0.5vh;
+                left: 8vw;
+            }
+
+            .add_button{
+                color: white;
+                font-size: 16px;
+                //font-weight: bolder;
+                background-color: #FF7B00;
+                border: solid 1px #FF7B00;
+                //display: block;
+                //margin-top: 3vh;
+                width: 20vw;
+                height: 5vh;
+                //margin-bottom: 5vh;
+                border-radius: 10px;
+                position: relative;
+                right: 4vw;
+            }
+        }
     }
 
 }

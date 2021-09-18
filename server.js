@@ -25,6 +25,7 @@ app.use(bodyParser.urlencoded({limit:"10mb", extended: true}))
 require("./backend/routes/auth.routes")(app);
 require("./backend/routes/event.routes")(app);
 require("./backend/routes/user.routes")(app);
+require("./backend/routes/friend.routes")(app);
 //const userRouter = require("./src/controllers/userController.js")
 //app.use("/users" , userRouter);
 

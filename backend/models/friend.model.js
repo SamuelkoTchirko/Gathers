@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 
 const friendSchema = new mongoose.Schema({
     first_user_id: {
-        type: Number,
+        type: String,
         required: true
     },
     second_user_id: {
-        type: Number,
+        type: String,
         required: true
     },
     confirmed: {
