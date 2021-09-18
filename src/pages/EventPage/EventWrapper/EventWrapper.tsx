@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
 
+import { createBrowserHistory } from 'history'
 
 import SportIcon from "../../../assets/png/sport.png";
 
@@ -22,6 +23,8 @@ interface I_EventWrapper{
 
 const EventWrapper: React.FC<I_EventWrapper> = (props) => {
 
+    const history = createBrowserHistory();
+
     const deleteCurrent = () => {
         console.log("Attempting to delete event...")
 
@@ -30,6 +33,9 @@ const EventWrapper: React.FC<I_EventWrapper> = (props) => {
 
         }, (reason: any) => {
             console.log("Odstranovanie eventu zlyhalo!" +reason)
+        }).then(() => {
+            history.push("/events")
+            history.go(0)
         })
     }
 

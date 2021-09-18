@@ -1,6 +1,9 @@
 import styles from './Header.module.scss';
 import React from 'react';
 
+//Images
+import Zoom from '../../assets/png/zoom.png'; 
+
 
 interface I_Header{
     title: string

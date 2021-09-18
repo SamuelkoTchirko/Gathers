@@ -13,8 +13,8 @@ export const create = (title, date_start, date_end, public_event) => {
 
 export const deleteEvent = (id) => {
   return new Promise ((resolve, reject) => {
-    EventService.deleteEvent(id).then((data) => {
-      resolve(data)
+    EventService.deleteEvent(id).then(() => {
+      resolve(true)
     }).catch((err) => {
       reject(err)
     })

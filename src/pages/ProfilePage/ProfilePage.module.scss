@@ -1,43 +1,91 @@
 
 .content_wrapper{
-    height: 100vh;
+    //height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    .profilepic_wrapper{
-        background-color: #FF9500;
-        height: 15vh;
-        width: 100vw;
-        //display: flex;
-        //justify-content: center;
-
-        .avatar {
-            position: relative;
-            top: 18%;
-            vertical-align: middle;
-            //width: 22vw;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            height: 20vh;
-            border-radius: 50%;
-        }
-    }
+    height: 100vh;
 
     .info_wrapper{
+        z-index: 30;
+        border-radius: 26px;
         margin-top: 12vh;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        background-color: white;
+        width: 75vw;
+        height: 18vh;
+        position: relative;
+        bottom: 22vh;
+        left: 2vw;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+        img{
+            object-fit: cover;
+            height: 25vh;
+            width: 30vw;
+            position: relative;
+            right: 3vw;
+            bottom: 3.5vh;
+            border-radius: 20px;
+        }
         
         .email{
-            position: relative;
-            bottom: 3vh;
             font-size: medium;
             color: rgb(68, 68, 68);
         }
     }
+
+    .numbers_wrapper{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+        position: relative;
+        bottom: 18vh;
+        width: 70vw;
+
+        .numbers_detail{
+            display: flex;
+            //justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            height: 5vh;
+            //background-color: rebeccapurple;
+
+            h2{
+                font-size: 16px;
+                position: relative;
+                bottom: 2vh;
+            }
+        }
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+
+        .ludia{
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            border-radius: 13px;
+            width: 78vw;
+            height: 8vh;
+            position: relative;
+            bottom: 5vh;
+    
+            h1{
+                margin-left: 7vw;
+                font-size: 18px;
+                position: relative;
+                bottom: 0.5vh;
+            }
+        }
+    }
+
 
     .logout_button{
         width: 70vw;

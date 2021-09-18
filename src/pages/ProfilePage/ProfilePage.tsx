@@ -34,20 +34,38 @@ const ProfilePage: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <Header title="Profil"></Header>
-      </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">profil</IonTitle>
-          </IonToolbar>
+        <IonHeader>
+          <Header title="Profil"></Header>
         </IonHeader>
         <div className={styles.content_wrapper}>
           <div className={styles.info_wrapper}>
-            <h2 className={styles.username} ><strong>{user.username}</strong></h2>
-            <h4 className={styles.email} >{user.email}</h4>
+            <img src={default_avatar} alt="" />
+            <div className={styles.details}>
+              <h2 className={styles.username} ><strong>{user.username}</strong></h2>
+              <h4 className={styles.email} >{user.email}</h4>
+            </div>
           </div>
+          <div className={styles.numbers_wrapper}>
+            <div className={styles.numbers_detail}>
+              <h1>62</h1>
+              <h2>Sleduje</h2>
+            </div>
+            <div className={styles.numbers_detail}>
+              <h1>30</h1>
+              <h2>Priatelia</h2>
+            </div>
+            <div className={styles.numbers_detail}>
+              <h1>5</h1>
+              <h2>Eventy</h2>
+            </div>
+          </div>
+
+          <a href="/people">
+            <div className={styles.ludia}>
+              <h1>Ľudia</h1>
+            </div>
+          </a>
           <IonButton className={styles.logout_button}onClick={() => {
             if(logout()){
               dispatch({

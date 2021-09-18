@@ -7,6 +7,7 @@ db.mongoose = mongoose;
 
 db.user = require("./user.model");
 db.event = require("./event.model");
+db.friend = require("./friend.model");
 db.event_participant = require("./event_participant.model")
 
 //db.ROLES = ["user", "admin", "moderator"];

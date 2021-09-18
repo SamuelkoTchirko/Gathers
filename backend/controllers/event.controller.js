@@ -25,7 +25,7 @@ exports.create = (req, res) => {
       console.log("Event failed to save to database!" + err);
       return;
     }else{ 
-        res.status(200);
+        res.status(200).send(true);
         console.log("Event was saved to database succesfully!");
     }
   });
@@ -48,9 +48,10 @@ exports.delete = (req, res) => {
       Event.findByIdAndDelete(req.params.id, function (err, data) {
         if(err){
           console.log(err)
+          res.status(500)
           return;
         }else{
-          res.send(data)
+          res.status(200).send(data)
         }
       });
     }

@@ -1,37 +1,28 @@
-const path = require("path");
-const express = require("express");
-const cors = require('cors');
-const router = express.Router();
-const { urlencoded } = require("express");
-const mongoose = require("mongoose");
+//const config = require("../config/auth.config");
+const db = require("../models");
+const User = db.user;
 
+const verify_token = require("../middlewares/verify_token")
 
-router.use(cors({origin: true}))
+var jwt = require("jsonwebtoken");
+//var bcrypt = require("bcryptjs");
 
-router.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+//const config = require("../config/auth.config");
 
+exports.findByUsername = (req, res) => {
+    var id = verify_token.verify(req.get("x-access-token")).id;
 
-
-//const User = require("../models/user.model"); 
-
-router.post("/register", (req, res) => {
-    console.log(req.body.username);
-    console.log(req.body.password);
-    const user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    })
-    user.save((err, newUser) => {
-        if(err){
-            console.log("Error nastal v userController, error: "+err);
-        }
-    })
-    //console.log(user)
-})
-
-//module.exports = router;
+    if(id){
+        User.find({"username": {"$regex": req.params.query, "$options": "i"}}, function (err, data) {
+            if(err){
+                console.log(err)
+                res.status(404).send(err)
+                return;
+            }else{
+                res.status(200).send(data)
+            }
+        });
+    }else{
+        res.status(500).send("Nedostatocne prava")
+    }
+}

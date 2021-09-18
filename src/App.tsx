@@ -47,6 +47,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import NewEventPage from "./pages/NewEventPage/NewEventPage"
+import FindPeoplePage from "./pages/FindPeoplePage/FindPeoplePage"
 
 import AppWrapper from './AppWrapper';
 
@@ -71,6 +72,7 @@ const App: React.FC = () => {
             <Route exact path="/home" component={MainPage} />
             <Route exact path="/events" component={EventPage} />
             <Route exact path="/event/new" component={NewEventPage} />
+            <Route exact path="/people" component={FindPeoplePage} />
           </>
         </IonRouterOutlet>
       </IonReactRouter>

@@ -2,6 +2,8 @@
 import React, { useDebugValue, useState, useEffect } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
 
+import { createBrowserHistory } from 'history'
+
 //Styling Imports
 import styles from './NewEventPage.module.scss';
 
@@ -29,6 +31,8 @@ interface EntryPageInterface{
 
 const NewEventPage: React.FC = () => {
 
+    const history = createBrowserHistory();
+
     const [title, setTitle] = useState("");
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -38,10 +42,12 @@ const NewEventPage: React.FC = () => {
         console.log("Attempting event creation")
 
         create(title, startDate, endDate, public_event).then((value: any) => {
-            console.log("Event uspesne pridany"+value)
-
+            //console.log(value)
         }, (reason: any) => {
             console.log("Pridavanie eventu zlyhalo!" +reason)
+        }).then(() => {
+            history.push("/events")
+            history.go(0)
         })
 
     }
