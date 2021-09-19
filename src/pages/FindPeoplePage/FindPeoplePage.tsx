@@ -34,12 +34,6 @@ const FindPeoplePage: React.FC = () => {
         findByUsername(query).then((data: any) => {
             const current_id = JSON.parse(localStorage.getItem("user")as any).id;
 
-            data.data.forEach((item: any, index: any) => {
-                if(current_id == item._id){
-                    data.data.splice(index, 1)
-                }
-            })
-
             setUsers(data.data)
         }, (reason: any) => {
             console.log("Vyhladavanie zlyhalo" +reason)
