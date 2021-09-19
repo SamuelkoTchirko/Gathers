@@ -56,7 +56,7 @@
         border: solid 1px #FF7B00;
         display: block;
         margin-top: 3vh;
-        width: 60%;
+        width: 70%;
         height: 8vh;
         margin-bottom: 5vh;
         border-radius: 12px;
@@ -93,6 +93,36 @@
                 //font-weight: bolder;
                 background-color: #FF7B00;
                 border: solid 1px #FF7B00;
+                //display: block;
+                //margin-top: 3vh;
+                width: 20vw;
+                height: 5vh;
+                //margin-bottom: 5vh;
+                border-radius: 10px;
+                position: relative;
+                right: 4vw;
+            }
+            .add_button_pending{
+                color: white;
+                font-size: 16px;
+                //font-weight: bolder;
+                background-color: gray;
+                border: solid 1px gray;
+                //display: block;
+                //margin-top: 3vh;
+                width: 20vw;
+                height: 5vh;
+                //margin-bottom: 5vh;
+                border-radius: 10px;
+                position: relative;
+                right: 4vw;
+            }
+            .add_button_confirmed{
+                color: black;
+                font-size: 16px;
+                //font-weight: bolder;
+                background-color: white;
+                border: solid 1px white;
                 //display: block;
                 //margin-top: 3vh;
                 width: 20vw;

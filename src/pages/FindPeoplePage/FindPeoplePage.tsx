@@ -71,7 +71,17 @@ const FindPeoplePage: React.FC = () => {
                     {users.map(item => (
                         <div className={styles.result}>
                             <h2 key={item._id}>{item.username}</h2>
-                            <button className={styles.add_button} type="button" onClick={() => handleFriendRequest(item._id)}>Pridať</button>
+                            {
+                                (() => {
+                                    if(item.confirmed == null){
+                                        return <button className={styles.add_button} type="button" onClick={() => handleFriendRequest(item._id)}>Pridať</button>
+                                    }else if(item.confirmed == false){
+                                        return <button className={styles.add_button_pending} type="button">Čakajúca žiadosť</button>
+                                    }else if(item.confirmed == true){
+                                        return <button className={styles.add_button_confirmed} type="button">Priatelia</button>
+                                    }
+                                })()
+                            }
                         </div>
                     ))}
                     </div>
