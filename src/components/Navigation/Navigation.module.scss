@@ -25,6 +25,32 @@
         flex-direction: row;
         align-items: center;
 
+        .add_wrapper{
+            height: 4vh;
+            width: 10vw;
+            position: relative;
+            bottom: 50%;
+
+            .icon{
+                height: 3vh;
+            }
+
+            .add_icon{
+                //position: relative;
+                //bottom: 125%;
+                //height: 15vh;
+    
+                .add_button{
+                    //position: relative;
+                    //bottom: 50vh;
+                    //background-color: orange;
+                    //color: orange;
+                }
+            }
+
+        }
+
+
         a{
             height: 4vh;
 
@@ -34,12 +60,6 @@
 
             img{
                 height: 4vh;
-            }
-
-            .add_icon{
-                position: relative;
-                bottom: 125%;
-                height: 15vh;
             }
 
             .home_icon{

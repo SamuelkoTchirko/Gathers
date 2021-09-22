@@ -24,6 +24,15 @@ const createRequest = (id) => {
   })
 };
 
+const getRequests = () => {
+  console.log("Getting requests...")
+
+  return axios.get(API_URL + "friends/requests", {
+    headers: setTokenHeader()
+  })
+}
+
 export default {
-  createRequest
+  createRequest,
+  getRequests
 };

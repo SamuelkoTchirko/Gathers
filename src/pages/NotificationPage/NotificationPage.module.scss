@@ -1,0 +1,39 @@
+.content_wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .icon{
+        height: 5vh;
+    }
+    
+    
+
+    .tabs{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+        height: 7vh;
+
+        p{
+            font-size: 11px;
+        }
+
+        .tab{
+            //border: none;
+            width: 33%;
+            height: 100%;
+            border-bottom: 1px solid whitesmoke;
+            background-color: white;
+        }
+
+        .tab_active{
+            //border: none;
+            width: 33%;
+            height: 100%;
+            border-bottom: 3px solid orange;
+            background-color: white;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonBadge } from '@ionic/react';
 import ExploreContainer from '../../components/ExploreContainer/ExploreContainer';
 
 //Styles
@@ -62,8 +62,14 @@ const ProfilePage: React.FC = () => {
           </div>
 
           <a href="/people">
-            <div className={styles.ludia}>
+            <div className={styles.menu_item}>
               <h1>Ľudia</h1>
+            </div>
+          </a>
+          <a href="/notifications">
+            <div className={styles.menu_item}>
+              <h1>Notifikácie</h1>
+              <IonBadge color="danger">66</IonBadge>
             </div>
           </a>
           <IonButton className={styles.logout_button}onClick={() => {

@@ -11,6 +11,8 @@ module.exports = function(app) {
 
   app.post("/friend/add", controller.createRequest);
 
+  app.get("/friends/requests", controller.getRequests);
+
   //app.post("/events/:event_id/delete", controller.delete);
 
   //app.post("/events/:event_id/update", controller.update);

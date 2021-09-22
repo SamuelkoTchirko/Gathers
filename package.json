@@ -18,7 +18,7 @@
     "@testing-library/user-event": "^12.6.3",
     "@types/jest": "^26.0.20",
     "@types/node": "^12.19.15",
-    "@types/react": "^16.14.3",
+    "@types/react": "^16.14.15",
     "@types/react-dom": "^16.9.10",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
@@ -73,7 +73,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint":"eslint"
   },
   "eslintConfig": {
     "extends": [
@@ -94,8 +95,14 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.7",
     "@capacitor/cli": "3.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
     "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.26.0",
     "nodemon": "^2.0.7"
   },
   "description": "An Ionic project"
