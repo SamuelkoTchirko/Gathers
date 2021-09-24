@@ -32,7 +32,16 @@ const getRequests = () => {
   })
 }
 
+const acceptRequest = (request_id) => {
+  console.log("Accepting request...")
+
+  return axios.patch(API_URL + "friends/requests/accept/"+request_id, {}, {
+    headers: setTokenHeader()
+  })
+}
+
 export default {
   createRequest,
-  getRequests
+  getRequests,
+  acceptRequest
 };

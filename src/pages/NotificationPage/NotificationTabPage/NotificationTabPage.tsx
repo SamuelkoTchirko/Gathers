@@ -27,7 +27,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useSelector , useDispatch} from "react-redux"
 import { Number } from 'mongoose';
 
-import { getRequests } from "../../../redux/actions/friends";
+import { getRequests, acceptRequest } from "../../../redux/actions/friends";
 import { request } from 'http';
 
 
@@ -62,6 +62,18 @@ const NotificationTabPage: React.FC<I_NotificationPage> = (props) => {
         })
     }
 
+    const handleRequestAccept = (request_id: String) => {
+        console.log("Attempting request accept")
+
+        acceptRequest(request_id).then((data: any) => {
+            console.log("Request uspesne potvrdeny")
+            history.push("/notifications")
+            history.go(0)
+        }, (reason: any) => {
+            console.log("Potrvdenie requestu zlyhalo " +reason)
+        })
+    }
+
 
     function PeopleNotifications(): JSX.Element {
         return (
@@ -71,7 +83,13 @@ const NotificationTabPage: React.FC<I_NotificationPage> = (props) => {
                 {requests.map(item => (
                     <>
                         <div className={styles.notification_wrapper}>
-                            <h4>{item.username}</h4>
+                            <div className={styles.notification}>
+                                <p>{item.username}</p>
+                                <button className={styles.accept_button} onClick={() => {
+                                    handleRequestAccept(item.request_id)
+                                }}>Prijať</button>
+                                <button className={styles.decline_button}>Odmietnuť</button>
+                            </div>
                         </div>
                     </>
                 ))}

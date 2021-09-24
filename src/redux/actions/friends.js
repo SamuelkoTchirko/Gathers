@@ -20,4 +20,14 @@ export const getRequests = () => {
     })
   })
 };
+
+export const acceptRequest = (request_id) => {
+  return new Promise ((resolve, reject) => {
+    FriendService.acceptRequest(request_id).then((data) => {
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+};
   

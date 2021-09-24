@@ -13,6 +13,8 @@ module.exports = function(app) {
 
   app.get("/friends/requests", controller.getRequests);
 
+  app.patch("/friends/requests/accept/:id", controller.acceptRequest);
+
   //app.post("/events/:event_id/delete", controller.delete);
 
   //app.post("/events/:event_id/update", controller.update);

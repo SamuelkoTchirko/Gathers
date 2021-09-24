@@ -42,8 +42,6 @@ exports.createRequest = (req, res) => {
 exports.getRequests = (req, res) => {
   var id = verify_token.verify(req.get("x-access-token")).id;
 
-  var response_field = []
-
   Friend.find({ confirmed: false , second_user_id: id})
     .then(users => {
       var fn = function asyncFunction(v){
@@ -94,4 +92,23 @@ exports.getRequests = (req, res) => {
     .catch(error => {
       console.log(error)
     })
+}
+
+exports.acceptRequest = (req, res) => {
+  var id = verify_token.verify(req.get("x-access-token")).id;
+
+  if(id){
+    Friend.findOneAndUpdate({_id: req.params.id}, {confirmed: true}, function(err, data){
+      if(err){
+        console.log("Potvrdenie ziadosti zlyhalo: "+err)
+        res.status(404)
+      }else{
+        console.log("Ziadost bola uspesne potvrdena")
+        res.status(200).send(true)
+      }
+    })
+  }else{
+    console.log("Nemate opravnenie potvrdit ziadost")
+    res.status(404)
+  }
 }
